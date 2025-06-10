@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | Brechó ByChá</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel="icon" href="/assets/images/favicon.ico">
+
+  <meta name="generator" content="Jekyll v4.4.1" />
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="description" content="{{ site.description }}" />
+  <meta property="og:description" content="{{ site.description }}" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:title" content="{{ page.title }}" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","description":"{{ site.description }}","headline":"{{ page.title }}","name":"{{ site.title }}","url":"{{ site.url }}"}</script>
+  </head>
+<body>
+
+<header style="text-align: center; padding: 2rem 0;">
+  <img src="/assets/images/bycha-logo.JPG" alt="Logo ByChá" style="max-height: 120px;">
+
+  <nav class="main-nav" style="margin-top: 1rem;"> {# Adicionei a navegação aqui #}
+    <ul style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px;">
+      <li><a href="/">Início</a></li> {# Link correto para a home #}
+      <li><a href="/about/">Sobre</a></li> {# Link para a página Sobre #}
+      {# Se você tiver uma página específica para posts, adicione aqui #}
+      {# <li><a href="/blog/">Blog</a></li> #}
+    </ul>
+  </nav>
+</header>
+
+<main style="padding: 1rem 2rem; max-width: 800px; margin: auto;">
+  {{ content }} {# Conteúdo da página atual (ex: "Bem-vinda ao blog...") #}
+
+  {# Esta é a seção para listar os posts na sua página inicial #}
+  {# A condição `page.url == '/'` garante que os posts só apareçam na página inicial #}
+  {% if page.url == '/' or page.url == '/index.html' %} 
+    <h2 style="margin-top: 3rem;">Posts Recentes</h2>
+    {% for post in site.posts limit:5 %} {# Lista os 5 posts mais recentes #}
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p style="font-size: 0.9em; color: #666;">Publicado em {{ post.date | date: "%d/%m/%Y" }}</p>
+        {% if post.excerpt %} {# Verifica se o post tem um resumo #}
+          {{ post.excerpt | markdownify }} {# Mostra um resumo do post, markdownify para renderizar Markdown #}
+        {% else %}
+          <p>{{ post.content | strip_html | truncatewords: 30 }}</p> {# Se não tiver excerpt, pega as primeiras 30 palavras #}
+        {% endif %}
+        <a href="{{ post.url }}" style="text-decoration: none; color: #9B59B6;">Leia mais &rarr;</a>
+      </article>
+    {% endfor %}
+  {% endif %}
+</main>
+
+<footer style="text-align: center; color: #aaa; font-size: 0.9rem; padding: 2rem;">
+  <p>&copy; {{ site.time | date: "%Y" }} Brechó By Chá 💜</p>
+</footer>
+</body>
+</html>

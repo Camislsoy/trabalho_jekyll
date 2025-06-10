@@ -1,0 +1,22 @@
+---
+layout: default
+title: Início
+---
+
+<h1>Bem-vinda ao blog do Brechó By Chá! 💜</h1>
+
+<p>Confira nossos últimos posts sobre moda circular, estilo consciente e achadinhos incríveis:</p>
+
+<ul style="list-style: none; padding: 0;">
+  {% for post in site.posts %}
+    <li style="margin-bottom: 2rem;">
+      <h2 style="margin-bottom: 0.3rem;">
+        <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #9c27b0;">
+          {{ post.title }}
+        </a>
+      </h2>
+      <small style="color: #888;">{{ post.date | date: "%d/%m/%Y" }}</small>
+      <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+    </li>
+  {% endfor %}
+</ul>
