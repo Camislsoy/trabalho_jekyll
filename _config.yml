@@ -23,8 +23,8 @@ include:
 title: Brechó Bychá
 email: contato@bycha.com.br
 description: Um blog sobre moda circular, estilo e sustentabilidade com afeto.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://localhost:4000"
+baseurl: "/trabalho_jekyll" # the subpath of your site, e.g. /blog
+url: "https://camislsoy.github.io"
 Instragran_username: bychatienda
 github_username:  Camislsoy
 
